@@ -24,8 +24,8 @@ config.action_mailer.smtp_settings = {
   domain: "coverdoc.com",
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: "username",
-  password: "password"
+  user_name: "coverdoc1@gmail.com",
+  password: "gilman1"
 }
 
 config.action_mailer.default_url_options = { :host => "localhost:3000" }
