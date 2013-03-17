@@ -25,11 +25,11 @@ CoverDoc::Application.configure do
   config.action_mailer.smtp_settings = {
   address: "smtp.gmail.com",
   port: 587,
-  domain: "coverdoc.com",
+  domain: "railscasts.com",
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: "username",
-  password: "password"
+  user_name: "coverdoc1@gmail.com",
+  password: "gilman12"
 }
 
   # Defaults to nil and saved in location specified by config.assets.prefix
