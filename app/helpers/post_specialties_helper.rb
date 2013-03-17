@@ -1,0 +1,2 @@
+module PostSpecialtiesHelper
+end

@@ -1,0 +1,18 @@
+<%= simple_form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :email %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :phone %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <p> &nbsp;   &nbsp;Please email CoverDoc1@gmail.com to have new specialties added or click here:</p>
+  &nbsp;   &nbsp;<%= link_to t('.new', :default => t("New Specialty")),
+            new_specialty_path,
+            :class => 'btn btn-primary' %>
+  <%= f.association :specialties,collection: Specialty.all(order: 'field asc'), label_method: :field, as: :check_boxes %>
+
+
+<%= f.button :submit %>
+
+
+<% end %>

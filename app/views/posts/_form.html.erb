@@ -1,0 +1,18 @@
+<%= simple_form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
+  
+
+<%= f.input :description %>
+<%= f.input :start_date %>
+<%= f.input :end_date %>
+<%= f.input :fee %>
+<%= f.input :location %>
+<p> &nbsp;   &nbsp;Please email CoverDoc1@gmail.com to have new specialties added or click here:</p>
+  &nbsp;   &nbsp;<%= link_to t('.new', :default => t("New Specialty")),
+            new_specialty_path,
+            :class => 'btn btn-primary' %>
+<%= f.association :specialties,collection: Specialty.all(order: 'field'), label_method: :field, as: :check_boxes %>
+
+
+<%= f.button :submit %>
+
+<% end %>

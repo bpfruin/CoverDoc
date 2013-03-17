@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CoverDoc.com</title>
+  <!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+ 
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+ 
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      <a class="brand" href="<%= posts_path %>">CoverDoc</a>
+ 
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse collapse">
+        <!-- .nav, .navbar-search, .navbar-form, etc -->
+        <ul class="nav">
+        	
+
+
+        	<% if current_user %>
+        	<li><%= link_to "Messages", messages_path%></li>
+  			  <li><%= link_to current_user.email, user_path(current_user) %></li>
+          <li><%= link_to "Log Out", logout_path %></li>
+
+  			<% else %>
+        	<li><%= link_to "Sign Up", signup_path%></li>
+        	<li><%= link_to "Log in", login_path%></li>
+        	<% end %>
+
+
+        </ul>
+      </div>
+ 
+    </div>
+  </div>
+</div>
+
+
+<body>
+<div class="container">
+	<% flash.each do |name, msg| %>
+	<div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+		<a class="close" data-dismiss="alert">x</a>
+		<%= msg %>
+	</div>
+	<% end %>
+
+	<div class="row">
+		<div class="span10"><%= yield %></div>
+		<div class="span2">
+			<h2>About Us</h2>
+			We're providing a market for doctors where previously there was none!
+      <br/>
+      <br/>
+      Find a doctor to cover your practice at CoverDoc.com
+      <br/>
+      <br/>
+      <br/>
+      <b>© 2013 Brian Fruin<b>
+		</div>
+	</div>
+</div>
+</body>
+</html>

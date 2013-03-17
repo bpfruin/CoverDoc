@@ -1,0 +1,56 @@
+<%- model_class = Post -%>
+<div class="page-header">
+        <%= paginate @posts %>
+
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h4>Click user to view post and full description</h4>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:start_date) %></th>
+      <th><%= model_class.human_attribute_name(:end_date) %></th>
+      <th><%= model_class.human_attribute_name(:specialties) %></th>
+
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr id="post_<%= post.id %>">
+        <td><%= link_to post.user.email, post_path(post) %></td>
+        <td><%= post.start_date %></td>
+        <td><%= post.end_date %></td>
+
+        <% @specialties = post.specialties %>
+
+        <% @field = [] %>
+        <% @specialties.each do |i| %>
+        <% @field << i.field %>
+
+        <% end %>
+
+        <td><%= @field %></td>
+
+        <td>
+
+        <% if post.user_id == @this_user.id %>
+ 
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_post_path(post), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      post_path(post),
+                      :method => :delete, remote: true,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_post_path,
+            :class => 'btn btn-primary' %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  specialty_id: 1
+  user_id: 1
+  user_specialty_name: MyString
+
+two:
+  specialty_id: 1
+  user_id: 1
+  user_specialty_name: MyString

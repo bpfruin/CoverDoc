@@ -1,0 +1,40 @@
+<%- model_class = Message -%>
+<div class="page-header">
+  <%= paginate @messages %>
+
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h4>Click user to view message</h4>
+
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:from) %></th>
+      <th><%= model_class.human_attribute_name(:start_date) %></th>
+      <th><%= model_class.human_attribute_name(:sent) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @messages.each do |message| %>
+      <% if message.poster_id == @user.id %>
+      <tr id="message_<%= message.id %>">
+        <td><%= link_to message.sender.email, message_path(message) %></td>
+        <td><%= message.post.start_date %></td>
+        <td><%=l message.created_at.to_date() %></td>
+        <td>
+         
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      message_path(message),
+                      :method => :delete, remote: true,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+              <% end %>
+
+    <% end %>
+  </tbody>
+</table>
+
+
