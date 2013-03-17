@@ -24,8 +24,8 @@ config.action_mailer.smtp_settings = {
   domain: "railscasts.com",
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: "coverdoc1@gmail.com",
-  password: "gilman12"
+  user_name: "username",
+  password: "password"
 }
 
 config.action_mailer.default_url_options = { :host => "localhost:3000" }

@@ -28,8 +28,8 @@ CoverDoc::Application.configure do
   domain: "railscasts.com",
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: "coverdoc1@gmail.com",
-  password: "gilman12"
+  user_name: "username",
+  password: "password"
 }
 
   # Defaults to nil and saved in location specified by config.assets.prefix
